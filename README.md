@@ -1,3 +1,3 @@
-# c-c-Examples
+# C/C++ Examples
 C and C++ programming examples
-lkllllllllllllllllllllllll
+A repository of C&C++ examples.
