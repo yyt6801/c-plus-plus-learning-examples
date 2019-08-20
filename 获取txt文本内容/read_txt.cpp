@@ -1,14 +1,14 @@
 // // //-------------------------------------------------------------------------------------
-// //�?1 ok! �?fopen fgets 获取1.txt文本内�?�并打印出来,暂不能识�?�?�?
+// // ok! fopen fgets  1.txt
 // #include <stdio.h>
 // #include <stdlib.h>
 // #include <string.h>
 // #define MAX_LINE 1024
 // int main()
 // {
-//  char buf[MAX_LINE];  /*缓冲�?*/
-//  FILE *fp;            /*文件指针*/
-//  int len;             /*行字符个�?*/
+//  char buf[MAX_LINE];  /*����*/
+//  FILE *fp;            /*�ļ�ָ��*/
+//  int len;             
 //  if((fp = fopen("1.txt","r")) == NULL)
 //  {
 //     perror("fail to read");
@@ -17,7 +17,7 @@
 //  while(fgets(buf,MAX_LINE,fp) != NULL)
 //  {
 //     len = strlen(buf);
-//     buf[len] = '\0';  /*去掉换�?��??*/
+//     buf[len] = '\0';  
 //     printf("%s",buf);
 //  }
 //   return 0;
@@ -25,11 +25,10 @@
 
 
 // //-------------------------------------------------------------------------------------
-// //�?2 ok! �?fopen fseek fgets读取1.txt文本内�?�并打印
+// //��2 ok!  fopen fseek fgets 1.txt 
 // #include<stdio.h>
 // #include<stdlib.h>
 // #include<string.h>
-// //函数返回fname指定文件的全部内容，如果打不开文件，则返回NULL，并显示打开文件错�?? 
 // char *getfileall(char *fname)
 // {
 // 	FILE *fp;
@@ -37,7 +36,7 @@
 // 	char txt[1000];
 // 	int filesize;
 // 	if ((fp=fopen(fname,"r"))==NULL){
-// 		printf("打开文件%s错�?�\n",fname);
+// 		printf("δ�ҵ�%s\n",fname);
 // 		return NULL;
 // 	}
  
@@ -64,25 +63,25 @@
 // }
 
 //-----------------------------------------------------------------------------
-//�?3 ok! �?ifstream   getline读取1.txt
+//��3 ok!  ifstream   getline  1.txt
 #include <iostream>
 #include <fstream>
 using namespace std;
  
 int main()
 {
-    string a[100];              //采用 string 类型，存100行的文本，不要用数组 
+    string a[100];               
     int i=0; 
     ifstream infile;
  
     infile.open("1.txt",ios::in);
  
-    while(!infile.eof())            // 若未到文件结束一直循�? 
+    while(!infile.eof())           
     {  
-        getline(infile, a[i], '\n');//读取一行，以换行�?�结束，存入 a[] �?
-        i++;                    //下一�?
+        getline(infile, a[i], '\n');
+        i++;                   
     }
-    for(int ii=0;ii<i;ii++)        // 显示读取的txt内�?? 
+    for(int ii=0;ii<i;ii++)        
     {  
         cout<< a[ii] << endl;       
     }
