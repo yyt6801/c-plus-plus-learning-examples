@@ -3,6 +3,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
+#include <io.h>
 
 //#include <sstream>//stringstream  ss;需要用到---具体用法???
 using namespace std;
@@ -52,12 +53,12 @@ int main()
     char xxx[1];
     memset(xxx, 0x00, sizeof(xxx));
 
-    strcpy(root, "E:/files/InformationSecurity/data/DICT/");
+    strcpy(root, "DICT/");
 
     if (aim_code[0] >= 97 && aim_code[0] <= 122)
         xxx[0] = aim_code[0] - 32;
 
-    root[39] = xxx[0];
+    root[strlen(root)] = xxx[0];
     strcat(root, "/");
 
     //
@@ -82,7 +83,7 @@ int main()
 	strcat(root, "-");
 	root[43] = aim_code[1];
 	strcat(root, ".txt");*/
-    printf("%s\n", root);
+    //printf("%s\n", root);
     //system("pause");
 
     char buf[MAX_LINE]; /*缓冲区*/
