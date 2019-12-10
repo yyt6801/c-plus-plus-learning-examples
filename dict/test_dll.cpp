@@ -24,7 +24,7 @@ extern "C"
         }
     };
     _declspec(dllexport) A a;
-#define MAX_LINE 2048
+#define MAX_LINE 3800
 #define IMGNUM 20000 //图片所在文件夹中图片的最大数量
     char img_files[IMGNUM][1000];
 
@@ -80,17 +80,24 @@ extern "C"
         //
         int num = getFiles(root);
         int i, j;
-        for (i = 0; i < num; ++i)
+        if (1 == num)
         {
-            //printf("%s\n", img_files[i]);
-            for (j = 2; j < 20; j++)
+            strcat(root, img_files[0]);
+        }
+        else
+        {
+            for (i = 0; i < num; ++i)
             {
-                if (img_files[i][j] == aim_code[1])
+                //printf("%s\n", img_files[i]);
+                for (j = 2; j < 20; j++)
                 {
-                    strcat(root, img_files[i]);
-                    printf("%s\n", root);
-                    break;
-                    break;
+                    if (img_files[i][j] == aim_code[1])
+                    {
+                        strcat(root, img_files[i]);
+                        printf("%s\n", root);
+                        break;
+                        break;
+                    }
                 }
             }
         }
@@ -108,10 +115,11 @@ extern "C"
         int rownum = 0;
         if ((fp = fopen(root, "r")) == NULL)
         {
-            printf("cannot read %s", root); //输出目标密码和对应行数
-            system("pause");
-            perror("fail to read");
-            exit(1);
+            printf("cannot read %s", root);
+            return "cannot translate this words!";
+            //system("pause");
+            /*perror("fail to read");
+        exit(1);*/
         }
         while (fgets(buf, MAX_LINE, fp) != NULL)
         {
@@ -122,12 +130,13 @@ extern "C"
             if (strcmp(buf, aim_code) == 0)
             {
                 fgets(buf, MAX_LINE, fp);
-                printf("%s %d \n", buf, rownum); //输出目标密码和对应行数
-                                                 //system("pause");
+                printf("%s %d \n", buf, rownum);
+                //system("pause");
 
                 return buf;
             }
         }
+        return "no this words!";
         printf("cannot get password!\n");
     }
     _declspec(dllexport) int g_nUsageCount = 3195;

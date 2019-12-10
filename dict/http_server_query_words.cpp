@@ -99,29 +99,32 @@ static DWORD CALLBACK FdHandler(IN LPVOID lpCtx)
             printf("要查询的英文单词为：rec_search_word=%s\n", rec_search_word);
 
             //开始调用dll查询翻译
+            char send_all[4096];
+            memset(send_all, 0x00, sizeof(send_all));
             char *ex_words;
             HINSTANCE h = LoadLibrary("test_dll");
             char *(*psearch_words)(char *);
             psearch_words = (char *(_cdecl *)(char *))(GetProcAddress(h, "search_words"));
-            char en_words[20] = "look"; //要查询的单词
+
             ex_words = psearch_words(rec_search_word);
-            //strcpy(ex_words, psearch_words(rec_search_word));//将en_words改为rec_search_word
+
             //printf("ex_words = %s\n",ex_words);//返回的是ex_words
-            printf("strlen(ex_words) = %d\n", strlen(ex_words)); //返回的是ex_words
+            //printf("strlen(ex_words) = %d\n",strlen(ex_words));//返回的是ex_words
 
             //拼凑出返回的response
-            char send_header[4096] =
+            char header[80] =
                 "HTTP/1.1 200 OK\r\n"
                 "Content-Type: text/html; charset=gb2312\r\n"
                 "Connection: Close\r\n\r\n";
 
-            strcat(send_header, ex_words);
-            printf("strlen(send_header) = %d\n", strlen(send_header)); //返回的是ex_words
-            send_header[strlen(send_header) + strlen(ex_words)] = '\0';
-            printf("%s\n", send_header);
-            printf("size:%d\r\n%s\r\n", strlen(send_header) + strlen(ex_words), send_header);
+            strcpy(send_all, header);
+            strcat(send_all, ex_words);
+            printf("strlen(send_header) = %d\n", strlen(send_all)); //返回的是ex_words
+            send_all[strlen(send_all) + strlen(ex_words)] = '\0';
+            //printf("send:%s\n",send_all);
+            printf("size:%d\r\n%s\r\n", strlen(send_all) + strlen(ex_words), send_all);
 
-            i = send(fd, send_header, 4096, 0);
+            i = send(fd, send_all, 4096, 0);
             FreeLibrary(h);
         }
 
