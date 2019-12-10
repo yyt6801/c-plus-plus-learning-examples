@@ -104,13 +104,13 @@ static DWORD CALLBACK FdHandler(IN LPVOID lpCtx)
             char *(*psearch_words)(char *);
             psearch_words = (char *(_cdecl *)(char *))(GetProcAddress(h, "search_words"));
             char en_words[20] = "look"; //要查询的单词
-            ex_words = psearch_words(en_words);
+            ex_words = psearch_words(rec_search_word);
             //strcpy(ex_words, psearch_words(rec_search_word));//将en_words改为rec_search_word
-            printf("ex_words = %s\n", ex_words);                 //返回的是ex_words
+            //printf("ex_words = %s\n",ex_words);//返回的是ex_words
             printf("strlen(ex_words) = %d\n", strlen(ex_words)); //返回的是ex_words
 
             //拼凑出返回的response
-            char send_header[1024] =
+            char send_header[4096] =
                 "HTTP/1.1 200 OK\r\n"
                 "Content-Type: text/html; charset=gb2312\r\n"
                 "Connection: Close\r\n\r\n";
@@ -119,9 +119,9 @@ static DWORD CALLBACK FdHandler(IN LPVOID lpCtx)
             printf("strlen(send_header) = %d\n", strlen(send_header)); //返回的是ex_words
             send_header[strlen(send_header) + strlen(ex_words)] = '\0';
             printf("%s\n", send_header);
-            printf("size:%d\r\n%s\r\n", strlen(send_header) + strlen(ex_words), send_header); //打印halos_html.txt的内容
+            printf("size:%d\r\n%s\r\n", strlen(send_header) + strlen(ex_words), send_header);
 
-            i = send(fd, send_header, 1024, 0);
+            i = send(fd, send_header, 4096, 0);
             FreeLibrary(h);
         }
 
