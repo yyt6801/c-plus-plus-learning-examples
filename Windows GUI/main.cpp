@@ -16,11 +16,11 @@ int WINAPI WinMain(HINSTANCE hInst , HINSTANCE hPrevInst, LPSTR args,int ncmdsho
     if(!RegisterClassW(&wc))
         return -1;
 
-    CreateWindowW(L"myWindowClass",L"My Window",WS_OVERLAPPEDWINDOW | WS_VISIBLE,100,100,500,500,
+    CreateWindow(TEXT("myWindowClass"),TEXT("My Window"),WS_OVERLAPPEDWINDOW | WS_VISIBLE,100,100,500,500,
                     NULL,NULL,NULL,NULL);
     MSG msg = {0};
 
-    while(GetMessage(&msg,NULL,NULL,NULL))
+    while(GetMessage(&msg,NULL,0,0))
     {
         TranslateMessage(&msg);
         DispatchMessage(&msg);
