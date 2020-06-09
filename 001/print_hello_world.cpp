@@ -3,6 +3,8 @@
 #include <iostream>
 int main()
 {
-	printf("hello_world!");
-	system("pause");
+	
+enum days {SUN = 1, MON, TUE, WED, THU, FRI, SAT};
+enum days d = FRI;
+	printf("%d!",d);
 }

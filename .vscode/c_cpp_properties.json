@@ -2,8 +2,7 @@
     "configurations": [{
         "name": "Win32",
         "includePath": [
-            "${workspaceFolder}/**",
-            "F:/进阶/test2005/test/inc"
+            "${workspaceFolder}/**"
         ],
         "defines": [
             "_DEBUG",
