@@ -1,6 +1,7 @@
 //简单测试打印出Hello_world!!!
 #include <stdio.h>
 #include <iostream>
+using namespace std;
 int main()
 {
 	
