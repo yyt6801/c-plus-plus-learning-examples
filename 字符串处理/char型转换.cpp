@@ -29,15 +29,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	//sprintf把float型转为char型
 	float a_num = 354.23564;
 	char buffer[32];
-	// 执行bai以下语句,buffer里面就保存了f转换的结果
-	sprintf(buffer,"%f",a_num);
+	sprintf(buffer,"%f",a_num);         //float  ->   char [20]
 	printf("buffer:  %s\n",buffer);
 
 	//sprintf把float型转为string型
 	float b_num = 5345.2535;
 	string buffer_s;
-	// 执行bai以下语句,buffer里面就保存了f转换的结果
-	sprintf(buffer,"%f",b_num);
+	sprintf(buffer,"%f",b_num);         //float  ->   string
 	printf("buffer:  %s\n",buffer);
 
 	system("pause");
