@@ -2,6 +2,8 @@
 #include <tchar.h>
 #include <iostream>//system("pause");需要
 #include "string.h"//strcpy函数需要
+#include <string>
+using namespace std;
 int _tmain(int argc, _TCHAR* argv[])
 {
 	char aa[]="HelloWorld!";					//char[]
@@ -23,6 +25,20 @@ int _tmain(int argc, _TCHAR* argv[])
 	char *m;
 	m="2019-04-18 13:27:08";
 	printf("%s\n",m);
+
+	//sprintf把float型转为char型
+	float a_num = 354.23564;
+	char buffer[32];
+	// 执行bai以下语句,buffer里面就保存了f转换的结果
+	sprintf(buffer,"%f",a_num);
+	printf("buffer:  %s\n",buffer);
+
+	//sprintf把float型转为string型
+	float b_num = 5345.2535;
+	string buffer_s;
+	// 执行bai以下语句,buffer里面就保存了f转换的结果
+	sprintf(buffer,"%f",b_num);
+	printf("buffer:  %s\n",buffer);
 
 	system("pause");
 
