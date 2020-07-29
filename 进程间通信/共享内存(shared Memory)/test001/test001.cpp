@@ -16,7 +16,7 @@ int main()
 {
     cout << "create memorymapfile..." << endl;
     const char *shared_name = "testMmf";
-    const char *file_name = "d:\\testMmf.mmf";
+    const char *file_name = "d:\\testMmf";
     const DWORD mmf_size = 512 * 1024;
     //存取模式
     mmf_access_mode access_mode = (GENERIC_READ | GENERIC_WRITE);

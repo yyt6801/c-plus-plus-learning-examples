@@ -6,6 +6,10 @@ int main()
 
     int *p = &a;//   p  61ff1c       *p=a错
 
+
+    int *p;
+    p = &a;
+
     printf("%x\n",p);//p的值     
     printf("%d\n",*p);//          0x...   
     printf("%x\n",&p);//p的地址
