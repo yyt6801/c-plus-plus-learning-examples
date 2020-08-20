@@ -81,9 +81,7 @@ int main()
         getline(infile, a[i], '\n');
         i++;                   
     }
-    for(int ii=0;ii<i;ii++)        
-    {  
-        cout<< a[ii] << endl;       
-    }
- infile.close();
+    
+    cout<< *a << endl;   
+    infile.close();
 }

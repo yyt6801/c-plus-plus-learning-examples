@@ -1,5 +1,1 @@
-这是文件内容,包含中英文字符abc123
-Ye有大小写
-/?.,\[]{d}!#$%^&*()
-各种字符都有
-just do it.
+Provider = OraOLEDB.Oracle.1; Password = ANSTEEL; Persist Security Info = True; User ID = ANSTEEL; Data Source = LOCAL_ORA
