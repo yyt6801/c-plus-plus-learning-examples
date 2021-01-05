@@ -44,7 +44,7 @@ void insertsort(linklist L)
 	while(p)
 	{
 		q = p->next;//p的下一个结点
-		pre = L;
+		pre = L;//p的前一个结点
 		while(pre->next != NULL && pre->next->data < p->data)
 			pre = pre->next;
 		p->next = pre->next;

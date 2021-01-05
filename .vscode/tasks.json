@@ -3,7 +3,7 @@
         {
             "type": "shell",
             "label": "g++.exe build active file",
-            "command": "F:\\MinGW\\bin\\g++.exe",
+            "command": "C:\\MinGW\\bin\\g++.exe",
             "args": [
                 "-g",
                 "${file}",
@@ -11,13 +11,13 @@
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
-                "cwd": "F:\\MinGW\\bin"
+                "cwd": "C:\\MinGW\\bin"
             }
         },
         {
             "type": "shell",
             "label": "C/C++: g++.exe build active file",
-            "command": "F:\\MinGW\\bin\\g++.exe",
+            "command": "C:\\MinGW\\bin\\g++.exe",
             "args": [
                 "-g",
                 "${file}",
