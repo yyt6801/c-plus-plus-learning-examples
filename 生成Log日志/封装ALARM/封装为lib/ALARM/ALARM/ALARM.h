@@ -12,6 +12,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #endif
+
 #define FILE_MAX_SIZE (1024*1024)
 
 /* define the alarm level */

@@ -2,15 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#ifdef _WIN32
+#ifdef WIN32
 #include <windows.h>
-#include <io.h>
-#include <direct.h>
-#endif
-#ifdef linux 
+#else
 #include <unistd.h> // linux下头文件
-#include <sys/types.h>
-#include <sys/stat.h>
 #endif
 #define FILE_MAX_SIZE (1024*1024)
 

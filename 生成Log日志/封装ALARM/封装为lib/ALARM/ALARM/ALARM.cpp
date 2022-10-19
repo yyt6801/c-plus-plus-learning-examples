@@ -1,6 +1,4 @@
-
 #include "ALARM.h"
-#include <io.h>
 /*
 获得当前时间字符串
 @param buffer [out]: 时间字符串
@@ -64,7 +62,7 @@ void write_log_file(char* filename,long max_size, char* buffer, unsigned buf_siz
         long length = get_file_size(filename);
         if (length > max_size)
         {
-            unlink(filename); // 删除文件
+            _unlink(filename); // 删除文件
         }
         // 写日志
         {
@@ -87,51 +85,33 @@ void write_log_file(char* filename,long max_size, char* buffer, unsigned buf_siz
 }
 void ALARM(int alarm_class, int alarm_num,char* buffer)
 {
-	char* dir=(char*)"log";
-	if (access(dir, 0) == -1)
+	char* dir = (char*)"log";
+	if (_access(dir, 0) == -1)
 	{
-		printf("%s is not existing! now make it",dir);
+		printf("%s is not existing! now make it", dir);
 #ifdef WIN32
-		int flag=mkdir(dir); 
+		int flag = _mkdir(dir);
 #endif
 #ifdef linux 
-		int flag=mkdir(dir, 0777);
+		int flag = mkdir(dir, 0777);
 #endif
 		if (flag == 0)
 		{
 			printf("make it\n");
-		} else {
+		}
+		else {
 			printf("make error\n");
 		}
 	}
- 
-	// if (access(dir, 0) == 0)
-	// {
-	// 	printf("%s exists but can not access! now delete it\n",dir);
-	// 	int flag=rmdir(dir);
-	// 	if (flag == 0)
-	// 	{
-	// 		printf("delete it successfully\n");
-	// 	} else {
-	// 		printf("delete error\n");
-	// 	}
-	// }
-	
     char today_date[32];
     memset(today_date, 0, sizeof(today_date));
     get_local_date(today_date);//.txt以日期命名
     char filename[32];
     memset(filename, 0, sizeof(filename));//.txt的日志名，每天一个
-    strcpy(filename,".\\log\\");
-    strcat(filename,today_date);
+	strcpy(filename, ".\\log\\");
+	strcat(filename, today_date);
     strcat(filename,".txt");
+
     write_log_file(filename, FILE_MAX_SIZE, buffer, strlen(buffer));
 
-}
-int main()
-{
-	ALARM( AL_INFO, 8205, (char*)"pltcm_log1");
-	ALARM( AL_INFO, 8205, (char*)"pltcm_log2");
-	ALARM( AL_INFO, 8205, (char*)"pltcm_log3");
-	return 0;
 }
